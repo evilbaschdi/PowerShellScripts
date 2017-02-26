@@ -1,0 +1,6 @@
+Get-Command -Module OneGet
+Get-Command -Module PackageManagement
+#correct package source for windows 10
+Register-PackageSource -Name chocolatey -ProviderName Chocolatey -Location http://chocolatey.org/api/v2/
+#outdated package source if chocolatey was installed manually
+Unregister-PackageSource -Source 'chocolatey' -Location 'http://chocolatey.org/api/v2/' -Provider 'PSModule'

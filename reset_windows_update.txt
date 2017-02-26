@@ -1,0 +1,67 @@
+net stop wuauserv
+net stop bits
+net stop cryptsvc
+net stop trustedinstaller
+sc config cryptsvc start= auto obj= „NT Authority\NetworkService“ password= a
+sc config wuauserv start= auto obj= LocalSystem
+sc config bits start= delayed-auto obj= LocalSystem
+Sc config trustedinstaller start= demand obj= LocalSystem
+Sc config eventlog start= auto
+reg add HKLM\SYSTEM\CurrentControlSet\Services\wuauserv\Parameters /v ServiceDll /t REG_EXPAND_SZ /d „%systemroot%\system32\wuaueng.dll“ /f
+reg add HKLM\SYSTEM\CurrentControlSet\Services\bits\Parameters /v ServiceDll /t REG_EXPAND_SZ /d „%systemroot%\system32\qmgr.dll“ /f
+reg delete HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f
+reg delete HKLM\COMPONENTS\PendingXmlIdentifier /f
+reg delete HKLM\COMPONENTS\NextQueueEntryIndex /f
+reg delete HKLM\COMPONENTS\AdvancedInstallersNeedResolving /f
+sc sdset wuauserv D:(A;;CCLCSWRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)S:(AU;FA;CCDCLCSWRPWPDTLOSDRCWDWO;;;WD)
+sc sdset bits D:(A;CI;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)S:(AU;SAFA;WDWO;;;BA)
+sc sdset cryptsvc D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)S:(AU;FA;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;WD)
+sc sdset trustedinstaller D:(A;CI;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPDTLOCRRC;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)S:(AU;SAFA;WDWO;;;BA)
+sc sdset eventlog D:(A;;CCLCSWLOCRRC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWRPWPDTLOCRRC;;;SY)S:(AU;SA;DCRPWPDTCRSDWDWO;;;WD)(AU;FA;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;WD)
+takeown /f %systemroot%\winsxs\pending.xml
+icacls %systemroot%\winsxs\pending.xml /grant Administrators:(F)
+icacls %systemroot%\winsxs\pending.xml /grant Administratörer:(F)
+del /q %systemroot%\winsxs\pending.xml
+ren %systemroot%\System32\Catroot2 oldcatroot2
+ren %systemroot%\SoftwareDistribution SoftwareDistribution.old
+rename \ProgramData\Microsoft\Network\Downloader Downloader.old
+cd /d %windir%\system32
+regsvr32.exe atl.dll /s
+regsvr32.exe urlmon.dll /s
+regsvr32.exe jscript.dll /s
+regsvr32.exe vbscript.dll /s
+regsvr32.exe scrrun.dll /s
+regsvr32.exe msxml3.dll /s
+regsvr32.exe msxml6.dll /s
+regsvr32.exe actxprxy.dll /s
+regsvr32.exe softpub.dll /s
+regsvr32.exe wintrust.dll /s
+regsvr32.exe dssenh.dll /s
+regsvr32.exe rsaenh.dll /s
+regsvr32.exe cryptdlg.dll /s
+regsvr32.exe oleaut32.dll /s
+regsvr32.exe ole32.dll /s
+regsvr32.exe shell32.dll /s
+regsvr32.exe wuapi.dll /s
+regsvr32.exe wuaueng.dll /s
+regsvr32.exe wups.dll /s
+regsvr32.exe wups2.dll /s
+regsvr32.exe qmgrprxy.dll /s
+regsvr32.exe wucltux.dll /s
+regsvr32.exe wuwebv.dll /s
+net start eventlog
+net start cryptsvc
+net start bits
+net start wuauserv
+fsutil resource setautoreset true c:\
+netsh winhttp reset proxy
+bitsadmin /reset /allusers
+wuauclt.exe /resetauthorization /detectnow
+:MESSAGE
+echo+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo===========================================================
+echo     The commands has been succesfully executed. Hit enter to continue
+echo===========================================================
+echo+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Pause > Null
+:end
