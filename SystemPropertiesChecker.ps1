@@ -1,12 +1,4 @@
-﻿Function Test-RegistryValue($regkey, $name) {
-    $exists = Get-ItemProperty -Path "$regkey" -Name "$name" -ErrorAction SilentlyContinue
-    If (($exists -ne $null) -and ($exists.Length -ne 0)) {
-        Return $true
-    }
-    Return $false
-}
-
-#Basic
+﻿#Basic
 Write-Host("## Basic ##")
 #Computername
 Write-Host("Computername: " + $env:COMPUTERNAME)
@@ -92,4 +84,9 @@ if(Test-Path .\GetDotNetVersions.ps1) {
     Write-Host("## .Net ##")
     .\GetDotNetVersions.ps1
 
+}
+else {
+Write-Host("")
+Write-Host "Press any key to continue..."
+$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp") > $null
 }
