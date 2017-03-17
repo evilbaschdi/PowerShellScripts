@@ -1,6 +1,6 @@
 $ProjectsPath = "C:\dev"
 
-#.\nuget.exe update -self
+.\nuget.exe update -self
 
 
 ForEach( $File in Get-ChildItem $ProjectsPath\*.sln -Recurse ) 
