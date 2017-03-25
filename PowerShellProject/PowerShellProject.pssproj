@@ -33,6 +33,7 @@
     <Compile Include="RefreshStartmenuTiles.ps1" />
     <Compile Include="reset_windows_update.ps1" />
     <Compile Include="reset_windows_update.txt" />
+    <Compile Include="SyncGitRemotes.ps1" />
     <Compile Include="SystemPropertiesChecker.ps1" />
     <Compile Include="Update-sysinternals.ps1" />
     <Compile Include="WindowsUpdate.ps1" />
