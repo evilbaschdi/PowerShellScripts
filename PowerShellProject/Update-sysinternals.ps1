@@ -1,4 +1,5 @@
 ﻿$folder = "\progs n drivers\SysinternalsSuite"
+
 function Update-SysinternalsHTTP ($ToolsLocalDir)  
 { 
 	if (Test-Path $ToolsLocalDir){ 
@@ -54,6 +55,7 @@ Clear-Host
 
 "Update started..."
 write-host $env:dropbox$folder
+Get-ChildItem $env:dropbox$folder | Remove-Item
 Update-SysinternalsHTTP -ToolsLocalDir $env:dropbox$folder
 
 "The End"

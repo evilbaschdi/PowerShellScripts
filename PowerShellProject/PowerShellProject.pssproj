@@ -27,6 +27,7 @@
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="clone.ps1" />
     <Compile Include="GetDotNetVersions.ps1" />
     <Compile Include="portscanner.ps1" />
     <Compile Include="readme.md" />
@@ -38,6 +39,7 @@
     <Compile Include="Update-sysinternals.ps1" />
     <Compile Include="WindowsUpdate.ps1" />
     <Compile Include="update_nuget_packages.ps1" />
+    <Compile Include="winupdatefornano.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />

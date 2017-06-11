@@ -26,7 +26,7 @@ else {
         Write-Host "Installing updates..." 
         $scanResults = Invoke-CimMethod -InputObject $sess -MethodName ApplyApplicableUpdates 
         Write-Host "Done." 
-        Write-Host "It is recommended to reboot. (type Restart-Comptuer)" 
+        Write-Host "It is recommended to reboot. (type Restart-Computer)" 
     } 
     else { 
         Write-Host "Canceled." 
