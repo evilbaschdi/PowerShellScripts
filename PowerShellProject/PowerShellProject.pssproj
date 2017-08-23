@@ -27,6 +27,7 @@
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="BuildAndDeploy.ps1" />
     <Compile Include="clone.ps1" />
     <Compile Include="GetDotNetVersions.ps1" />
     <Compile Include="portscanner.ps1" />

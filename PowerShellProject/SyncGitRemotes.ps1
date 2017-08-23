@@ -31,7 +31,7 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             }
               #>
             If ($RemoteV -like "*"+$Remote1Path +"*" -and $RemoteV -like "*"+$Remote2Path +"*") {
-                # Add new Remote $Remote2Name to to repository
+                # Add new Remote $Remote2Name to repository
                 <#
                 $AddRemoteGit = git remote add $Remote2Name $Remote2Path$Directory      
                 Write-Host $AddRemoteGit
