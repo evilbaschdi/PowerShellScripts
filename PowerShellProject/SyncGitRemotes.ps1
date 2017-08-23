@@ -2,7 +2,7 @@
 # SyncGitRemotes.ps1
 #
 # Please set 'origin' and 'vsts' to fit your environment
-$ProjectsPath = 'C:\dev'
+$ProjectsPath = 'C:\Git'
 $Remote1Name = 'origin'
 $Remote1Path = 'https://github.com/evilbaschdi/'
 $Remote2Name = 'vsts'
@@ -40,7 +40,11 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
                 Write-Host Sync repos
                $GitSync =Git-Sync du 2>&1 | %{ "$_" }
                 Write-Host $GitSync
-            }            
+            }
+            Else
+            {
+            Write-Host no fitting repos found
+            }           
         }
     }
 }
