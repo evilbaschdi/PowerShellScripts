@@ -2,7 +2,10 @@
 # SyncGitRemotes.ps1
 #
 # Please set 'origin' and 'vsts' to fit your environment
-$ProjectsPath = 'C:\Git'
+
+Param([string]$ProjectsPath = 'C:\Git')
+
+#$ProjectsPath = 'C:\Git'
 $Remote1Name = 'origin'
 $Remote1Path = 'https://github.com/evilbaschdi/'
 $Remote2Name = 'vsts'

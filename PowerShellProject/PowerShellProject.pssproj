@@ -25,16 +25,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="call_SyncGitRemotes.cmd" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="BuildAndDeploy.ps1" />
     <Compile Include="clone.ps1" />
+    <Compile Include="ConnectViaRemoteManagement.ps1" />
     <Compile Include="GetDotNetVersions.ps1" />
     <Compile Include="portscanner.ps1" />
     <Compile Include="readme.md" />
     <Compile Include="RefreshStartmenuTiles.ps1" />
     <Compile Include="reset_windows_update.ps1" />
     <Compile Include="reset_windows_update.txt" />
+    <Compile Include="ScanRepositoryRemoteHost.ps1" />
     <Compile Include="SyncGitRemotes.ps1" />
     <Compile Include="SystemPropertiesChecker.ps1" />
     <Compile Include="Update-sysinternals.ps1" />
