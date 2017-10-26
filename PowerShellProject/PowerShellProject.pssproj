@@ -33,6 +33,7 @@
     <Compile Include="clone.ps1" />
     <Compile Include="ConnectViaRemoteManagement.ps1" />
     <Compile Include="GetDotNetVersions.ps1" />
+    <Compile Include="LocalGitBranchesWithChanges.ps1" />
     <Compile Include="portscanner.ps1" />
     <Compile Include="readme.md" />
     <Compile Include="RefreshStartmenuTiles.ps1" />
