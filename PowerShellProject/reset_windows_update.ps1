@@ -36,13 +36,13 @@ else
 
 net stop bits
 net stop wuauserv
-Set-Content config wuauserv start= disabled
+sc config wuauserv start= disabled
 net stop appidsvc
 net stop cryptsvc
 Remove-Item /S /Q C:\Windows\SoftwareDistribution
 net start bits
-Set-Content config wuauserv start= demand
-Set-Content config wuauserv start= automatic
+sc config wuauserv start= demand
+sc config wuauserv start= automatic
 net start wuauserv
 net start appidsvc
 net start cryptsvc
