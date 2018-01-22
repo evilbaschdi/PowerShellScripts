@@ -13,12 +13,12 @@ $Remote2Path = 'https://evilbaschdi.visualstudio.com/Main/_git/'
 
 function Git-Sync {
     # Set 'origin' and 'vsts' to fit your environment
-    git fetch origin --tags
-    git fetch vsts --tags
-    git push origin --all
-    git push origin --tags
-    git push vsts --all
-    git push vsts --tags
+    git fetch $Remote1Name --tags
+    git fetch $Remote2Name --tags
+    git push $Remote1Name --all
+    git push $Remote1Name --tags
+    git push $Remote2Name --all
+    git push $Remote2Name --tags
 }
 
 ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
@@ -27,21 +27,24 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
         If (Test-Path .\.git) {
             Write-Host $Directory.FullName
             $RemoteV = git remote -v  
+            Write-Host $RemoteV
             # Remove $Remote2Name    
             <#      
             If ($RemoteV -like "*"+$Remote2Name+"*") {
                 git remote rm $Remote2Name
             }
               #>
-            If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -like "*" + $Remote2Path + "*") {
-                # Add new Remote $Remote2Name to repository
-                <#
+
+            # Add new Remote $Remote2Name to repository
+            If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -notlike "*" + $Remote2Path + "*") {                
                 $AddRemoteGit = git remote add $Remote2Name $Remote2Path$Directory      
-                Write-Host $AddRemoteGit
-                #>
-                # Sync both repos      
+                Write-Host $AddRemoteGit     
+            }
+
+            # Sync both repos
+            If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -like "*" + $Remote2Path + "*") {                   
                 Write-Host Sync repos
-                $GitSync = Git-Sync du 2>&1 | % { "$_" }
+                $GitSync = Git-Sync du 2>&1 | ForEach-Object { "$_" }
                 Write-Host $GitSync
             }
             Else {

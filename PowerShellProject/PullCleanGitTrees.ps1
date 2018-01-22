@@ -5,7 +5,9 @@ $BranchBehind = 'Your branch is behind'
 ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
     If ($Directory.PSIsContainer -eq $True) {
         Set-Location $Directory.FullName
+        Write-Host $Directory.Name
         If (Test-Path .\.git) {
+            git fetch
             $GitStatus = git status           
             If ($GitStatus -like "*" + $BranchBehind + "*" -and $GitStatus -like "*" + $NothingToCommit + "*") {     
                 Write-Host "Pulling changes from " $Directory.FullName  
