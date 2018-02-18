@@ -5,11 +5,10 @@
 
 Param([string]$ProjectsPath = 'C:\Git')
 
-#$ProjectsPath = 'C:\Git'
 $Remote1Name = 'origin'
-$Remote1Path = 'https://github.com/evilbaschdi/'
+$Remote1Path = '*://github.com/evilbaschdi/'
 $Remote2Name = 'vsts'
-$Remote2Path = 'https://evilbaschdi.visualstudio.com/Main/_git/'
+$Remote2Path = 'https://evilbaschdi.visualstudio.com/'
 
 function Git-Sync {
     # Set 'origin' and 'vsts' to fit your environment
@@ -18,16 +17,17 @@ function Git-Sync {
     git push $Remote1Name --all
     git push $Remote1Name --tags
     git push $Remote2Name --all
-    git push $Remote2Name --tags
+    git push $Remote2Name --tags    
 }
 
 ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
     If ($Directory.PSIsContainer -eq $True) {
         Set-Location $Directory.FullName
+        
         If (Test-Path .\.git) {
             Write-Host $Directory.FullName
             $RemoteV = git remote -v  
-            Write-Host $RemoteV
+            #Write-Host $RemoteV
             # Remove $Remote2Name    
             <#      
             If ($RemoteV -like "*"+$Remote2Name+"*") {
@@ -36,19 +36,20 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
               #>
 
             # Add new Remote $Remote2Name to repository
-            If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -notlike "*" + $Remote2Path + "*") {                
+            If ($RemoteV -like "*" + $Remote1Path + "*" -and !($RemoteV -like "*" + $Remote2Path + "*")) {       
                 $AddRemoteGit = git remote add $Remote2Name $Remote2Path$Directory      
-                Write-Host $AddRemoteGit     
+                Write-Host $AddRemoteGit
             }
 
             # Sync both repos
-            If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -like "*" + $Remote2Path + "*") {                   
+            If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -like "*" + $Remote2Path + "*") {  
+                
                 Write-Host Sync repos
                 $GitSync = Git-Sync du 2>&1 | ForEach-Object { "$_" }
-                Write-Host $GitSync
+                Write-Host $GitSync                
             }
             Else {
-                Write-Host no fitting repos found
+                #Write-Host no fitting repos found
             }           
         }
     }
