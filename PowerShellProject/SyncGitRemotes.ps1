@@ -25,9 +25,9 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
         Set-Location $Directory.FullName
         
         If (Test-Path .\.git) {
-            Write-Host $Directory.FullName
+            Write-Output $Directory.FullName
             $RemoteV = git remote -v  
-            #Write-Host $RemoteV
+            #Write-Output $RemoteV
             # Remove $Remote2Name    
             <#      
             If ($RemoteV -like "*"+$Remote2Name+"*") {
@@ -38,15 +38,15 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             # Add new Remote $Remote2Name to repository
             If ($RemoteV -like "*" + $Remote1Path + "*" -and !($RemoteV -like "*" + $Remote2Path + "*")) {       
                 $AddRemoteGit = git remote add $Remote2Name $Remote2Path$Directory      
-                Write-Host $AddRemoteGit
+                Write-Output $AddRemoteGit
             }
 
             # Sync both repos
             If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -like "*" + $Remote2Path + "*") {  
                 
-                Write-Host Sync repos
+                Write-Output "Sync repos"
                 $GitSync = Git-Sync du 2>&1 | ForEach-Object { "$_" }
-                Write-Host $GitSync                
+                Write-Output $GitSync                
             }
             Else {
                 #Write-Host no fitting repos found
