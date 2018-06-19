@@ -6,7 +6,7 @@ $Remote2Path = 'https://evilbaschdi.visualstudio.com/Main/_git/'
 
 ForEach ( $File in Get-ChildItem $ProjectsPath\*.sln -Recurse ) {
     Set-Location $File.Directory
-    Write-Host $File.Fullname
+    Write-Output $File.Fullname
     $path = $PSScriptRoot + "\nuget.exe"
     Start-Process -FilePath $path -ArgumentList 'restore', $File.Fullname -NoNewWindow -Wait
 

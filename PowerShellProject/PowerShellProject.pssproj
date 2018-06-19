@@ -46,8 +46,8 @@
     <Compile Include="ScanRepositoryRemoteHost.ps1" />
     <Compile Include="SyncGitRemotes.ps1" />
     <Compile Include="SystemPropertiesChecker.ps1" />
+    <Compile Include="UpdateNugetPackages.ps1" />
     <Compile Include="WindowsUpdate.ps1" />
-    <Compile Include="update_nuget_packages.ps1" />
     <Compile Include="winupdatefornano.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

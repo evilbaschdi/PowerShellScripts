@@ -10,25 +10,25 @@ $choice.add($yes)
 $choice.add($no) 
  
 $currentbuild = (Get-ComputerInfo).WindowsBuildLabEx 
-Write-Host "-----------------------------------------------------------------------" 
-Write-Host "Current build is " $currentbuild 
-Write-Host "-----------------------------------------------------------------------" 
-Write-Host "Searching for updates..." 
+Write-Output "-----------------------------------------------------------------------" 
+Write-Output "Current build is " $currentbuild 
+Write-Output "-----------------------------------------------------------------------" 
+Write-Output "Searching for updates..." 
 $sess = New-CimInstance -Namespace root/Microsoft/Windows/WindowsUpdate -ClassName MSFT_WUOperationsSession 
 $scanResults = Invoke-CimMethod -InputObject $sess -MethodName ScanForUpdates -Arguments @{SearchCriteria = "IsInstalled=0"; OnlineScan = $true}  
 if ($scanResults.Updates.Count -eq 0) { 
-    Write-Host "There are no applicable updates." 
+    Write-Output "There are no applicable updates." 
 } 
 else { 
     $scanResults.Updates 
     $answer = $host.ui.PromptForChoice("Confirm", "Do you install this update?", $choice, 0) 
     if ($answer -eq 0) { 
-        Write-Host "Installing updates..." 
+        Write-Output "Installing updates..." 
         $scanResults = Invoke-CimMethod -InputObject $sess -MethodName ApplyApplicableUpdates 
-        Write-Host "Done." 
-        Write-Host "It is recommended to reboot. (type Restart-Computer)" 
+        Write-Output "Done." 
+        Write-Output "It is recommended to reboot. (type Restart-Computer)" 
     } 
     else { 
-        Write-Host "Canceled." 
+        Write-Output "Canceled." 
     } 
 }

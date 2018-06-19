@@ -8,13 +8,13 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             $RemoteV = git remote -v  
               
             If ($RemoteV -like "*" + $RemoteName + "*") {
-                Write-Host $RemoteV
-                Write-Host $Directory.FullName
+                Write-Output $RemoteV
+                Write-Output $Directory.FullName
             }              
               
         }
     }
 }
 
-Write-Host -NoNewLine "Press any key to continue..."
+Write-Output -NoNewLine "Press any key to continue..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

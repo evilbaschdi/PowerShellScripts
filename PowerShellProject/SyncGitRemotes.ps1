@@ -49,7 +49,7 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
                 Write-Output $GitSync                
             }
             Else {
-                #Write-Host no fitting repos found
+                #Write-Output no fitting repos found
             }           
         }
     }

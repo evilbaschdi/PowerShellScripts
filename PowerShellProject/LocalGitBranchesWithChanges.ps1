@@ -23,17 +23,17 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
     }
 }
 
-Write-Host $BranchAhead
+Write-Output $BranchAhead
 ForEach ($BranchAheadArrayItem in $BranchAheadArray) {
-    Write-Host $BranchAheadArrayItem
+    Write-Output $BranchAheadArrayItem
 }
-Write-Host
-Write-Host "Changes to commit"
+Write-Output
+Write-Output "Changes to commit"
 ForEach ($ChangesToCommitArrayItem in $ChangesToCommitArray) {
-    Write-Host $ChangesToCommitArrayItem
+    Write-Output $ChangesToCommitArrayItem
 }
 
 Set-Location $PSScriptRoot
-Write-Host
-Write-Host -NoNewLine "Press any key to continue..."
+Write-Output
+Write-Output -NoNewLine "Press any key to continue..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

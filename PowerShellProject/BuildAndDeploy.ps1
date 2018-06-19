@@ -8,7 +8,7 @@ $Remote2Path = 'https://evilbaschdi.visualstudio.com/Main/_git/'
 
 ForEach ( $File in Get-ChildItem $ProjectsPath\*.sln -Recurse ) {
     Set-Location $File.Directory
-    Write-Host $File.Fullname
+    Write-Output $File.Fullname
 
     $RemoteV = git remote -v  
 
@@ -18,7 +18,7 @@ ForEach ( $File in Get-ChildItem $ProjectsPath\*.sln -Recurse ) {
         Invoke-MsBuild -Path $File.Fullname -Params "/t:Clean;Build /p:Configuration=Release /p:Platform=""Any CPU""" -ShowBuildOutputInCurrentWindow
     }
     Else {
-        Write-Host no fitting repos found
+        Write-Output no fitting repos found
     }              
 }
 Set-Location $PSScriptRoot

@@ -38,8 +38,8 @@ $pathCommon = $shell.SpecialFolders.Item('AllUsersStartMenu')
 $shortcuts = Get-ChildItem -Recurse $pathCommon, $pathUser -Include *.lnk
 
 foreach ($shortcut in $shortcuts) {
-    Write-Host $shortcut
+    Write-Output $shortcut
     (Get-ChildItem $shortcut).lastwritetime = get-date
 }
-Write-Host -NoNewLine "Press any key to continue..."
+Write-Output -NoNewLine "Press any key to continue..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
