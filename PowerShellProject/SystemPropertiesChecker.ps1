@@ -1,12 +1,12 @@
 ﻿#Basic
-Write-Host("## Basic ##")
+Write-Output("## Basic ##")
 #Computername
-Write-Host("Computername: " + $env:COMPUTERNAME)
+Write-Output("Computername: " + $env:COMPUTERNAME)
 #Current IP 
 $ipv4 = ((Test-Connection -ComputerName $env:COMPUTERNAME -Count 1).IPV4Address)
-Write-Host("Current IP (v4): " + $ipv4)
+Write-Output("Current IP (v4): " + $ipv4)
 $ipv6 = ((Test-Connection -ComputerName $env:COMPUTERNAME -Count 1).IPV6Address)
-Write-Host("Current IP (v6): " + $ipv6)
+Write-Output("Current IP (v6): " + $ipv6)
 #Productname:
 $regkeypath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\"
 $ReleaseId = ""
@@ -14,15 +14,15 @@ $ReleaseIdNull = (Get-ItemProperty $regkeypath).ReleaseId -eq $null
 if ($ReleaseIdNull -eq $false) {
     $ReleaseId = " (Release " + (Get-ItemProperty $regkeypath).ReleaseId + ")"
 }
-Write-Host("Productname: " + (Get-WMIObject Win32_OperatingSystem).Caption + $ReleaseId)
+Write-Output("Productname: " + (Get-WMIObject Win32_OperatingSystem).Caption + $ReleaseId)
 #Architecture
-Write-Host("Architecture: " + (Get-WMIObject Win32_OperatingSystem).OSArchitecture)
+Write-Output("Architecture: " + (Get-WMIObject Win32_OperatingSystem).OSArchitecture)
 #Manufacturer
-Write-Host("Manufacturer: " + (Get-WMIObject Win32_ComputerSystem).Manufacturer)
+Write-Output("Manufacturer: " + (Get-WMIObject Win32_ComputerSystem).Manufacturer)
 
 #Windows
-Write-Host("")
-Write-Host("## Windows ##")
+Write-Output("")
+Write-Output("## Windows ##")
 $BuildNumber = ""
 $CurrentVersion = (Get-WMIObject Win32_OperatingSystem).Version
 $CurrentVersionSplit = $CurrentVersion.Split('.')
@@ -39,24 +39,24 @@ else {
     $BuildNumber = $BuildLabExSplit[0] + "." + $BuildLabExSplit[1]
 }
 #Version number
-Write-Host("Version number: " + $CurrentVersionSplit[0] + "." + $CurrentVersionSplit[1] + " | Current build: " + $CurrentBuild + " (Build: " + $BuildNumber + ")")
+Write-Output("Version number: " + $CurrentVersionSplit[0] + "." + $CurrentVersionSplit[1] + " | Current build: " + $CurrentBuild + " (Build: " + $BuildNumber + ")")
 #BuildLab
-Write-Host("BuildLab: " + $BuildLab)
+Write-Output("BuildLab: " + $BuildLab)
 #BuildLabEx
-Write-Host("BuildLabEx: " + $BuildLabEx)
+Write-Output("BuildLabEx: " + $BuildLabEx)
 
 #Other
-Write-Host("");
-Write-Host("## Other ##");
+Write-Output("");
+Write-Output("## Other ##");
 #IE
 $ieregpath = "HKLM:\Software\Microsoft\Internet Explorer"
 $IeNull = (Get-ItemProperty $ieregpath).svcVersion -eq $null 
 if ( $IeNull -eq $false ) {
     $svcVersion = (Get-ItemProperty $ieregpath).svcVersion
-    Write-Host("Internet Explorer: " + $svcVersion)
+    Write-Output("Internet Explorer: " + $svcVersion)
 }
 #PowerShell
-Write-Host("PowerShell: " + $PSVersionTable.PSVersion)
+Write-Output("PowerShell: " + $PSVersionTable.PSVersion)
 
 #Git
 if (Test-Path "C:\Program Files\Git\bin\git.exe") {
@@ -65,7 +65,7 @@ if (Test-Path "C:\Program Files\Git\bin\git.exe") {
         $VersionInfo.FileMinorPart, 
         $VersionInfo.FileBuildPart, 
         $VersionInfo.FilePrivatePart)
-    Write-Host("Git for Windows: " + $FileVersion)
+    Write-Output("Git for Windows: " + $FileVersion)
 }
 
 if (Test-Path "C:\Program Files (x86)\Git\bin\git.exe") {
@@ -74,19 +74,19 @@ if (Test-Path "C:\Program Files (x86)\Git\bin\git.exe") {
         $VersionInfo.FileMinorPart, 
         $VersionInfo.FileBuildPart, 
         $VersionInfo.FilePrivatePart)
-    Write-Host("Git for Windows: " + $FileVersion)
+    Write-Output("Git for Windows: " + $FileVersion)
 }
 
 #.Net
 if (Test-Path .\GetDotNetVersions.ps1) {
 
-    Write-Host("")
-    Write-Host("## .Net ##")
+    Write-Output("")
+    Write-Output("## .Net ##")
     .\GetDotNetVersions.ps1
 
 }
 else {
-    Write-Host("")
-    Write-Host "Press any key to continue..."
+    Write-Output("")
+    Write-Output "Press any key to continue..."
     $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp") > $null
 }
