@@ -1,25 +1,29 @@
 #
 # SyncGitRemotes.ps1
 #
-# Please set 'origin' and 'vsts' to fit your environment
+# Please set 'origin' and 'azuredevops' to fit your environment
 
 Param([string]$ProjectsPath = 'C:\Git')
 
 $Remote1Name = 'origin'
 $Remote1Path = '*://github.com/evilbaschdi/'
-$Remote2Name = 'vsts'
-$Remote2Path = 'https://evilbaschdi.visualstudio.com/'
+
+$Remote2Name = 'azuredevops'
+$Remote2Path = 'https://evilbaschdi@dev.azure.com/evilbaschdi/Main/_git/'
 
 function Git-Sync {
     # Set 'origin' and 'vsts' to fit your environment
     git fetch $Remote1Name --tags
     git fetch $Remote2Name --tags
+    
     git push $Remote1Name --all
     git push $Remote1Name --tags
+
     git push $Remote2Name --all
     git push $Remote2Name --tags    
+   
 }
-
+#git config --get remote.origin.url #todo
 ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
     If ($Directory.PSIsContainer -eq $True) {
         Set-Location $Directory.FullName
@@ -29,19 +33,22 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             $RemoteV = git remote -v  
             #Write-Output $RemoteV
             # Remove $Remote2Name    
-            <#      
-            If ($RemoteV -like "*"+$Remote2Name+"*") {
+                 <#
+            If ($RemoteV -like "*"+$Remote3Name+"*") {
                 git remote rm $Remote2Name
-            }
-              #>
+            }#>
+              
 
             # Add new Remote $Remote2Name to repository
+            <#
             If ($RemoteV -like "*" + $Remote1Path + "*" -and !($RemoteV -like "*" + $Remote2Path + "*")) {       
                 $AddRemoteGit = git remote add $Remote2Name $Remote2Path$Directory      
                 Write-Output $AddRemoteGit
-            }
+            }#>
+                   
 
             # Sync both repos
+            
             If ($RemoteV -like "*" + $Remote1Path + "*" -and $RemoteV -like "*" + $Remote2Path + "*") {  
                 
                 Write-Output "Sync repos"
@@ -50,7 +57,7 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             }
             Else {
                 #Write-Output no fitting repos found
-            }           
+            }          
         }
     }
 }
