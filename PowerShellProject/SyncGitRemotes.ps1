@@ -11,7 +11,7 @@ $Remote1Path = '*://github.com/evilbaschdi/'
 $Remote2Name = 'azuredevops'
 $Remote2Path = 'https://evilbaschdi@dev.azure.com/evilbaschdi/Main/_git/'
 
-$Remote3Name = 'vsts'
+#$Remote3Name = 'vsts'
 
 function Git-Sync {
     # Set 'origin' and 'vsts' to fit your environment
@@ -36,9 +36,9 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             #Write-Output $RemoteV
             # Remove $Remote2Name    
                  
-            If ($RemoteV -like "*"+$Remote3Name+"*") {
-                git remote rm $Remote3Name
-            }
+            #If ($RemoteV -like "*"+$Remote3Name+"*") {
+            #    git remote rm $Remote3Name
+            #}
                           
 
             # Add new Remote $Remote2Name to repository            
