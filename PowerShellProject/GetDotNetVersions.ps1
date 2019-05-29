@@ -22,6 +22,8 @@ Select-Object PSChildName, Version, Release, @{
 		461310 { [Version]"4.7.1" }
 		461808 { [Version]"4.7.2" }
 		461814 { [Version]"4.7.2" }
+		528040 { [Version]"4.8" }
+		528049 { [Version]"4.8" }
 	  }
 	}
 } | Format-Table | Out-String)
