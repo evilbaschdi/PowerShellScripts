@@ -30,9 +30,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="call_SyncGitRemotes.cmd" />
+    <Content Include="DotNetVersionReleaseKeyMapping.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRsatToWindows.ps1" />
     <Compile Include="BuildAndDeploy.ps1" />
+    <Compile Include="ChangeVstsToAzureDevOpsRemoteUrl.ps1" />
     <Compile Include="clone.ps1" />
     <Compile Include="clone_vsts.ps1" />
     <Compile Include="ConnectViaRemoteManagement.ps1" />
