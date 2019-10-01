@@ -9,16 +9,16 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
     If ($Directory.PSIsContainer -eq $True) {
         Set-Location $Directory.FullName
         If (Test-Path .\.git) {
-                        $GitStatus = git status           
-            If ($GitStatus -like "*" + $NothingToCommit + "*") {       
-                If ($GitStatus -like "*" + $BranchAhead + "*") {      
-                  
+            $GitStatus = git status
+            If ($GitStatus -like "*" + $NothingToCommit + "*") {
+                If ($GitStatus -like "*" + $BranchAhead + "*") {
+
                     $BranchAheadArray.Add($Directory.FullName) > $null
-                }   
-            }     
-            Else {             
+                }
+            }
+            Else {
                 $ChangesToCommitArray.Add($Directory.FullName) > $null
-            }         
+            }
         }
     }
 }

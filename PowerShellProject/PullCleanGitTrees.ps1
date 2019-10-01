@@ -8,11 +8,11 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
         Write-Output $Directory.Name
         If (Test-Path .\.git) {
             git fetch
-            $GitStatus = git status           
-            If ($GitStatus -like "*" + $BranchBehind + "*" -and $GitStatus -like "*" + $NothingToCommit + "*") {     
-                Write-Output "Pulling changes from " $Directory.FullName  
+            $GitStatus = git status
+            If ($GitStatus -like "*" + $BranchBehind + "*" -and $GitStatus -like "*" + $NothingToCommit + "*") {
+                Write-Output "Pulling changes from " $Directory.FullName
                 git pull
-            }                   
+            }
         }
     }
 }

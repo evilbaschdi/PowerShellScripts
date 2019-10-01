@@ -9,15 +9,16 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
         Set-Location $Directory.FullName
         Write-Output $Directory.Name
         If (Test-Path .\.git) {
-            $RemoteV = git remote -v  
+            $RemoteV = git remote -v
             If ($RemoteV -like "*" + $Remote1Path + "*" -or $RemoteV -like "*" + $Remote2Path + "*") {
-            git fetch
-            $GitStatus = git status           
-            If ($GitStatus -like "*" + $BranchAhead + "*" -and $GitStatus -like "*" + $NothingToCommit + "*") {     
-                Write-Output "Pushing changes for " $Directory.FullName  
-                git push
-            }                   
-        }}
+                git fetch
+                $GitStatus = git status
+                If ($GitStatus -like "*" + $BranchAhead + "*" -and $GitStatus -like "*" + $NothingToCommit + "*") {
+                    Write-Output "Pushing changes for " $Directory.FullName
+                    git push
+                }
+            }
+        }
     }
 }
 

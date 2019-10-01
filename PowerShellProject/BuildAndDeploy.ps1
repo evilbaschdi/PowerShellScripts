@@ -10,7 +10,7 @@ ForEach ( $File in Get-ChildItem $ProjectsPath\*.sln -Recurse ) {
     Set-Location $File.Directory
     Write-Output $File.Fullname
 
-    $RemoteV = git remote -v  
+    $RemoteV = git remote -v
 
     If ($RemoteV -like "*" + $Remote1Path + "*" -or $RemoteV -like "*" + $Remote2Path + "*") {
         $path = $PSScriptRoot + "\nuget.exe"
@@ -19,6 +19,6 @@ ForEach ( $File in Get-ChildItem $ProjectsPath\*.sln -Recurse ) {
     }
     Else {
         Write-Output no fitting repos found
-    }              
+    }
 }
 Set-Location $PSScriptRoot
