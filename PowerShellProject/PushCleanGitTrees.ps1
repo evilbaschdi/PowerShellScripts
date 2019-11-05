@@ -1,6 +1,7 @@
 Param([string]$ProjectsPath = 'C:\Git')
 $Remote1Path = 'https://github.com/evilbaschdi/'
-$Remote2Path = 'https://evilbaschdi.visualstudio.com/Main/_git/'
+$Remote2Path = 'https://evilbaschdi@dev.azure.com/evilbaschdi/Main/_git/'
+$Remote3Path = 'https://evilbaschdi.visualstudio.com/Main/_git/'
 $NothingToCommit = 'nothing to commit'
 $BranchAhead = 'Your branch is ahead'
 
@@ -10,7 +11,7 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
         Write-Output $Directory.Name
         If (Test-Path .\.git) {
             $RemoteV = git remote -v
-            If ($RemoteV -like "*" + $Remote1Path + "*" -or $RemoteV -like "*" + $Remote2Path + "*") {
+            If ($RemoteV -like "*" + $Remote1Path + "*" -or $RemoteV -like "*" + $Remote2Path + "*" -or $RemoteV -like "*" + $Remote3Path + "*") {
                 git fetch
                 $GitStatus = git status
                 If ($GitStatus -like "*" + $BranchAhead + "*" -and $GitStatus -like "*" + $NothingToCommit + "*") {
