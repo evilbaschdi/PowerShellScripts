@@ -20,7 +20,7 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
                     Write-Output $File.Fullname
                     
                   
-                        (Get-Content -path $File.Fullname -Raw).Replace('<Version>$([System.DateTime]::UtcNow.AddHours(2).ToString(yyyy.M.d.Hmm))-develop</Version>', '<Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))-develop</Version>').Trim() | Set-Content -Path $File.Fullname -Encoding UTF8
+                        (Get-Content -path $File.Fullname -Raw).Replace('<Version>$([System.DateTime]::UtcNow.AddHours(2).ToString(yyyy.M.d.Hmm))</Version>', '<Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))</Version>').Trim() | Set-Content -Path $File.Fullname -Encoding UTF8
                                 
                
                    
