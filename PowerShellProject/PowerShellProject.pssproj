@@ -1,5 +1,4 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build" 
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
@@ -50,8 +49,11 @@
     <Compile Include="reset_windows_update.ps1" />
     <Compile Include="reset_windows_update.txt" />
     <Compile Include="ScanRepositoryRemoteHost.ps1" />
+    <Compile Include="SyncCarMp3List.ps1" />
     <Compile Include="SyncGitRemotes.ps1" />
     <Compile Include="SystemPropertiesChecker.ps1" />
+    <Compile Include="Temp.ps1" />
+    <Compile Include="UpdateModernApps.ps1" />
     <Compile Include="UpdateNugetPackages.ps1" />
     <Compile Include="WindowsUpdate.ps1" />
     <Compile Include="winupdatefornano.ps1" />

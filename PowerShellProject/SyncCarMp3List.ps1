@@ -1,15 +1,32 @@
-﻿[xml]$XmlDocument = Get-Content "D:\Users\evilb\OneDrive\Dokumente\Audi.ffs_gui"
+﻿$File = "D:\Users\evilb\OneDrive\Dokumente\Audi.ffs_gui"
+[xml]$XmlDocument = Get-Content $File
 
-$SyncPair = $XmlDocument.CreateElement("Pair")
-$Left = $XmlDocument.CreateElement("Left")
-$Right = $XmlDocument.CreateElement("Right")
+$FlashDiscPath = "H:\"
+$Mp3Path = "F:\mp3\"
 
-$Left.InnerText = "TestLinks"
-$Right.InnerText = "TestRechts"
+ForEach ($Directory in Get-ChildItem -Path $FlashDiscPath) {
+    If ($Directory.PSIsContainer -eq $True) {
 
-$SyncPair.AppendChild($Left)
-$SyncPair.AppendChild($Right)
+        $RightPath = $Directory.FullName
+        $LeftPath = $RightPath.Replace($FlashDiscPath, $Mp3Path)
+        Write-Output $LeftPath
+        Write-Output $RightPath
 
-$XmlDocument.FreeFileSync.FolderPairs.AppendChild($SyncPair)
+        $SyncPair = $XmlDocument.CreateElement("Pair")
+        $Left = $XmlDocument.CreateElement("Left")
+        $Right = $XmlDocument.CreateElement("Right")
 
-$XmlDocument.InnerXml
+        $Left.InnerText = $LeftPath
+        $Right.InnerText = $RightPath
+
+        $SyncPair.AppendChild($Left)
+        $SyncPair.AppendChild($Right)
+
+        $XmlDocument.FreeFileSync.FolderPairs.AppendChild($SyncPair)
+
+    }
+}
+
+
+$XmlDocument.Save($File)
+
