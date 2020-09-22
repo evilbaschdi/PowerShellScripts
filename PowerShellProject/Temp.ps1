@@ -11,16 +11,16 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
         Set-Location $Directory.FullName
         
         If (Test-Path .\.git) {     
-        $RemoteV = git remote -v        
+            $RemoteV = git remote -v        
             If ($RemoteV -like "*" + $Remote1Path + "*" -or $RemoteV -like "*" + $Remote2Path + "*" -or $RemoteV -like "*" + $Remote3Path + "*") {
 
-            $DirectoryFullName = $Directory.FullName
+                $DirectoryFullName = $Directory.FullName
                 ForEach ( $File in Get-ChildItem $DirectoryFullName\*.csproj -Recurse ) {
   
                     Write-Output $File.Fullname
                     
                   
-                        (Get-Content -path $File.Fullname -Raw).Replace('Include="Microsoft.SourceLink.Vsts.Git"', 'Include="Microsoft.SourceLink.AzureRepos.Git"').Trim() | Set-Content -Path $File.Fullname -Encoding UTF8
+                    (Get-Content -path $File.Fullname -Raw).Replace('Include="MahApps.Metro.IconPacks" Version="3.1.0"', 'Include="MahApps.Metro.IconPacks.Material" Version="3.2.0"').Trim() | Set-Content -Path $File.Fullname -Encoding UTF8
                                 
                
                    
@@ -34,10 +34,10 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
 
 
 
-                        git add .
-                        git commit -am'.'
+                #git add .
+                #git commit -am'.'
 
-                        git push 
+                #git push 
 
 
 

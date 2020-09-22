@@ -46,6 +46,7 @@
     <Compile Include="PushCleanGitTrees.ps1" />
     <Compile Include="readme.md" />
     <Compile Include="RefreshStartmenuTiles.ps1" />
+    <Compile Include="RenameGitMasterToMain.ps1" />
     <Compile Include="reset_windows_update.ps1" />
     <Compile Include="reset_windows_update.txt" />
     <Compile Include="ScanRepositoryRemoteHost.ps1" />
