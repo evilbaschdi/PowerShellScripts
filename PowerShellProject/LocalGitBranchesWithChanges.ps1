@@ -9,28 +9,12 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
     If ($Directory.PSIsContainer -eq $True) {
         Set-Location $Directory.FullName
         If (Test-Path .\.git) {
-            $GitStatus = git status
-            If ($GitStatus -like "*" + $NothingToCommit + "*") {
-                If ($GitStatus -like "*" + $BranchAhead + "*") {
-
-                    $BranchAheadArray.Add($Directory.FullName) > $null
-                }
-            }
-            Else {
-                $ChangesToCommitArray.Add($Directory.FullName) > $null
+            $GitDiff = git diff HEAD
+            If ($GitDiff -inotlike "") {              
+                Write-Output $Directory.FullName
             }
         }
     }
-}
-
-Write-Output $BranchAhead
-ForEach ($BranchAheadArrayItem in $BranchAheadArray) {
-    Write-Output $BranchAheadArrayItem
-}
-Write-Output
-Write-Output "Changes to commit"
-ForEach ($ChangesToCommitArrayItem in $ChangesToCommitArray) {
-    Write-Output $ChangesToCommitArrayItem
 }
 
 Set-Location $PSScriptRoot
