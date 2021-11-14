@@ -15,9 +15,9 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
                     #$RawString = $RawString.Replace('<TargetFramework>net5.0-windows</TargetFramework>', '<TargetFramework>net6.0-windows</TargetFramework>')
                     #$RawString = $RawString.Replace('<TargetFramework>net5.0</TargetFramework>', '<TargetFramework>net6.0</TargetFramework>')
                     #$RawString = $RawString.Replace('<TargetFramework>net5</TargetFramework>', '<TargetFramework>net6.0</TargetFramework>')
-                    $RawString = $RawString.Replace('6.0.100-rc.1.21458.32','6.0.100-rc.1.21463.6')
+                    $RawString = $RawString.Replace('6.0.100-rc.2.21505.57','6.0.100')
                     
-                    [System.IO.File]::WriteAllLines($File.Fullname, $RawString)
+                    [System.IO.File]::WriteAllLines($File.Fullname, $RawString.Trim())
                                 
                     Write-Output (Get-Content -path $File.Fullname -Raw)
                    

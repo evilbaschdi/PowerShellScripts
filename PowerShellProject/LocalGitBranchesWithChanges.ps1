@@ -10,7 +10,7 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
         Set-Location $Directory.FullName
         If (Test-Path .\.git) {
             $GitDiff = git diff HEAD
-            If ($GitDiff -inotlike "") {              
+            If ($GitDiff -inotlike "") {
                 Write-Output $Directory.FullName
             }
         }
