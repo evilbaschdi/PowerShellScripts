@@ -1,9 +1,4 @@
 Param([string]$ProjectsPath = 'C:\Git')
-$NothingToCommit = 'nothing to commit'
-$BranchAhead = 'Your branch is ahead'
-
-$ChangesToCommitArray = New-Object System.Collections.ArrayList
-$BranchAheadArray = New-Object System.Collections.ArrayList
 
 ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
     If ($Directory.PSIsContainer -eq $True) {
