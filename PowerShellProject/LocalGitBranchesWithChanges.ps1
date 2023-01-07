@@ -12,6 +12,9 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             $GitDiff = git diff HEAD
             If ($GitDiff -inotlike "") {
                 Write-Output $Directory.FullName
+                $GitStatus = git status --porcelain
+                git add -A
+                git commit -m ""$GitStatus""
             }
         }
     }
