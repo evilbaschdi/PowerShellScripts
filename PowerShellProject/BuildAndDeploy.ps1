@@ -10,7 +10,7 @@ ForEach ($File in Get-ChildItem -Path $ProjectsPath -Filter publish.ps1 -Recurse
     $RemoteV = git remote -v
 
     If ($RemoteV -like "*" + $Remote1Path + "*" -or $RemoteV -like "*" + $Remote2Path + "*") {
-        Invoke-Item (start powershell .\$File)
+        & $File
     }
     Else {
         Write-Output no fitting repos found
