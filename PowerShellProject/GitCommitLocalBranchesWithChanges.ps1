@@ -8,7 +8,7 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
             If ($GitDiff -inotlike "") {
                 Write-Output $Directory.FullName
                 git add -A
-                git commit -m "Files changed since last commit"
+                git commit -m "Updated core packages"
             }
         }
     }

@@ -16,8 +16,8 @@ ForEach ($Directory in Get-ChildItem -Path $ProjectsPath) {
                 $GitStatus = git status
                 If ($GitStatus -like "*" + $BranchAhead + "*" -and $GitStatus -like "*" + $NothingToCommit + "*") {
                     Write-Output "Pushing changes for " $Directory.FullName
-                    #git push origin
-                    #git push azuredevops
+                    git push origin
+                    git push azuredevops
                 }
             }
         }
