@@ -1,4 +1,4 @@
-﻿$Name = "evilbaschdi"
+$Name = "evilbaschdi"
 $Type = "users"
 $Repos = New-Object System.Collections.ArrayList @()
 $PageNumber = 1

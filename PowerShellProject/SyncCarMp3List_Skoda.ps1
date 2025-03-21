@@ -1,4 +1,4 @@
-﻿$File = "D:\Users\evilb\OneDrive\Dokumente\Skoda.ffs_gui"
+$File = "D:\Users\evilb\OneDrive\Dokumente\Skoda.ffs_gui"
 [xml]$XmlDocument = Get-Content $File
 
 $FlashDiscPath = "H:\"
@@ -29,4 +29,3 @@ ForEach ($Directory in Get-ChildItem -Path $FlashDiscPath) {
 
 
 $XmlDocument.Save($File)
-

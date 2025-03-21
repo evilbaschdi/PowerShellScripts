@@ -1,4 +1,4 @@
-﻿#Basic
+#Basic
 Write-Output("## Basic ##")
 #Computername
 Write-Output("Computername: " + $env:COMPUTERNAME)

@@ -1,4 +1,4 @@
-﻿$Name = Read-Host "Account"
+$Name = Read-Host "Account"
 $Collection = Read-Host "Collection"
 if ($null -eq $Collection) { "DefaultCollection" }
 $username = Read-Host "Username"
