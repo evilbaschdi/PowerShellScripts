@@ -1,12 +1,17 @@
 $projectsPath = "C:\Git"
 
 # Define current SDK versions
-
 $sdkPatchVersions = @{
-    "8"  = "411"
-    "9"  = "301"
-    "10" = "10.0.100-preview.5.25277.114"
+    "8"  = "413"
+    "9"  = "304"
+    "10" = "100-preview.7.25380.108"
 }
+
+# Boolean flag to control major version upgrade
+$upgradeMajorVersion = $true
+
+# Target major version to upgrade to (used if $upgradeMajorVersion is true)
+$targetMajorVersion = 9
 
 # Get all global.json files under the root path and its subdirectories
 $globalJsonFiles = Get-ChildItem -Path $projectsPath -Filter "global.json" -Recurse -File
@@ -20,23 +25,26 @@ foreach ($file in $globalJsonFiles) {
         # 8.0.100
         $currentSdkVersion = $globalJson.sdk.version
         # 8
-        $currentMajorVersion = $currentSdkVersion.Split('.')[0]
+        $currentMajorVersion = [int]$currentSdkVersion.Split('.')[0]
         # 0
         $currentMinorVersion = $currentSdkVersion.Split('.')[1]
         # 100
         #$currentPatchVersion = $currentSdkVersion.Split('.')[2]
 
-        # Increment the minor version
-        $newPatchVersion = $sdkPatchVersions[$currentMajorVersion]
+        # Determine the new major version based on the flag and target version
+        $newMajorVersion = if ($upgradeMajorVersion) { $targetMajorVersion } else { $currentMajorVersion }
+
+        # Determine the new patch version
+        $newPatchVersion = $sdkPatchVersions[$newMajorVersion.ToString()]
 
         # Construct the new SDK version string
-        $newSdkVersion = "$currentMajorVersion.$currentMinorVersion.$newPatchVersion"
+        $newSdkVersion = "$newMajorVersion.$currentMinorVersion.$newPatchVersion"
 
         Set-Location -Path $file.DirectoryName
-        dotnet new globaljson --sdk-version $newSdkVersion --force
+        #dotnet new globaljson --sdk-version $newSdkVersion --force
 
         Write-Host "Updated .NET SDK version in global.json '$fullName' from [$currentSdkVersion] to [$newSdkVersion]"
-        Write-Host "----------------------------------------------------------------------------------------------------------------"
+        Write-Host "-----------------------------------------------------------------------------------------------------------------------------------"
     }
     catch {
         Write-Error "An error occurred: $($_.Exception.Message)"

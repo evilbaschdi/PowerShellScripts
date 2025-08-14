@@ -1,20 +1,45 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 16
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "PowerShellProject", "PowerShellProject\PowerShellProject.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{089100B1-113F-4E66-888A-E83F3999EAFD}"
+	ProjectSection(SolutionItems) = preProject
+		PowerShellProject\AddRsatToWindows.ps1 = PowerShellProject\AddRsatToWindows.ps1
+		PowerShellProject\BuildAndDeploy.ps1 = PowerShellProject\BuildAndDeploy.ps1
+		PowerShellProject\call_GitSyncRemotes.cmd = PowerShellProject\call_GitSyncRemotes.cmd
+		PowerShellProject\clone.ps1 = PowerShellProject\clone.ps1
+		PowerShellProject\clone_vsts.ps1 = PowerShellProject\clone_vsts.ps1
+		PowerShellProject\ConnectViaRemoteManagement.ps1 = PowerShellProject\ConnectViaRemoteManagement.ps1
+		PowerShellProject\CreateFileExplorerVersionControlEntries.ps1 = PowerShellProject\CreateFileExplorerVersionControlEntries.ps1
+		PowerShellProject\DotNetVersionReleaseKeyMapping.json = PowerShellProject\DotNetVersionReleaseKeyMapping.json
+		PowerShellProject\GetDotNetVersions.ps1 = PowerShellProject\GetDotNetVersions.ps1
+		PowerShellProject\GetInstalledWindowsVersions.ps1 = PowerShellProject\GetInstalledWindowsVersions.ps1
+		PowerShellProject\GetPowerShellWithWindowsUpdate.ps1 = PowerShellProject\GetPowerShellWithWindowsUpdate.ps1
+		PowerShellProject\GitCommitLocalBranchesWithChanges.ps1 = PowerShellProject\GitCommitLocalBranchesWithChanges.ps1
+		PowerShellProject\GitListLocalBranchesWithChanges.ps1 = PowerShellProject\GitListLocalBranchesWithChanges.ps1
+		PowerShellProject\GitPullCleanTrees.ps1 = PowerShellProject\GitPullCleanTrees.ps1
+		PowerShellProject\GitPushCleanTrees.ps1 = PowerShellProject\GitPushCleanTrees.ps1
+		PowerShellProject\GitRenameMasterToMain.ps1 = PowerShellProject\GitRenameMasterToMain.ps1
+		PowerShellProject\GitSyncRemotes.ps1 = PowerShellProject\GitSyncRemotes.ps1
+		PowerShellProject\iobroker_UpdateHost.ps1 = PowerShellProject\iobroker_UpdateHost.ps1
+		PowerShellProject\iobroker_UpdateNodeJs.ps1 = PowerShellProject\iobroker_UpdateNodeJs.ps1
+		PowerShellProject\portscanner.ps1 = PowerShellProject\portscanner.ps1
+		PowerShellProject\readme.md = PowerShellProject\readme.md
+		PowerShellProject\RefreshStartmenuTiles.ps1 = PowerShellProject\RefreshStartmenuTiles.ps1
+		PowerShellProject\ReplaceFileContent.ps1 = PowerShellProject\ReplaceFileContent.ps1
+		PowerShellProject\reset_windows_update.ps1 = PowerShellProject\reset_windows_update.ps1
+		PowerShellProject\reset_windows_update.txt = PowerShellProject\reset_windows_update.txt
+		PowerShellProject\SetDotNetSdk.ps1 = PowerShellProject\SetDotNetSdk.ps1
+		PowerShellProject\SyncCarMp3List_Audi.ps1 = PowerShellProject\SyncCarMp3List_Audi.ps1
+		PowerShellProject\SyncCarMp3List_Skoda.ps1 = PowerShellProject\SyncCarMp3List_Skoda.ps1
+		PowerShellProject\SyncMp3List.ps1 = PowerShellProject\SyncMp3List.ps1
+		PowerShellProject\SystemPropertiesChecker.ps1 = PowerShellProject\SystemPropertiesChecker.ps1
+		PowerShellProject\UpdateModernApps.ps1 = PowerShellProject\UpdateModernApps.ps1
+		PowerShellProject\WindowsUpdate.ps1 = PowerShellProject\WindowsUpdate.ps1
+		PowerShellProject\winupdatefornano.ps1 = PowerShellProject\winupdatefornano.ps1
+	EndProjectSection
 EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
