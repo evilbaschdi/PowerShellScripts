@@ -41,7 +41,7 @@ foreach ($file in $globalJsonFiles) {
         $newSdkVersion = "$newMajorVersion.$currentMinorVersion.$newPatchVersion"
 
         Set-Location -Path $file.DirectoryName
-        #dotnet new globaljson --sdk-version $newSdkVersion --force
+        dotnet new globaljson --sdk-version $newSdkVersion --force
 
         Write-Host "Updated .NET SDK version in global.json '$fullName' from [$currentSdkVersion] to [$newSdkVersion]"
         Write-Host "-----------------------------------------------------------------------------------------------------------------------------------"
