@@ -2,16 +2,16 @@ $projectsPath = "C:\Git"
 
 # Define current SDK versions
 $sdkPatchVersions = @{
-    "8"  = "413"
-    "9"  = "304"
-    "10" = "100-preview.7.25380.108"
+    "8"  = "415"
+    "9"  = "306"
+    "10" = "100-rc.2.25502.107"
 }
 
 # Boolean flag to control major version upgrade
-$upgradeMajorVersion = $true
+$upgradeMajorVersion = $false
 
 # Target major version to upgrade to (used if $upgradeMajorVersion is true)
-$targetMajorVersion = 9
+$targetMajorVersion = 10
 
 # Get all global.json files under the root path and its subdirectories
 $globalJsonFiles = Get-ChildItem -Path $projectsPath -Filter "global.json" -Recurse -File

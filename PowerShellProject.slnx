@@ -1,0 +1,37 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="PowerShellScripts/AddRsatToWindows.ps1" />
+    <File Path="PowerShellScripts/BuildAndDeploy.ps1" />
+    <File Path="PowerShellScripts/call_GitSyncRemotes.cmd" />
+    <File Path="PowerShellScripts/clone.ps1" />
+    <File Path="PowerShellScripts/clone_vsts.ps1" />
+    <File Path="PowerShellScripts/ConnectViaRemoteManagement.ps1" />
+    <File Path="PowerShellScripts/CreateFileExplorerVersionControlEntries.ps1" />
+    <File Path="PowerShellScripts/DotNetVersionReleaseKeyMapping.json" />
+    <File Path="PowerShellScripts/GetDotNetVersions.ps1" />
+    <File Path="PowerShellScripts/GetInstalledWindowsVersions.ps1" />
+    <File Path="PowerShellScripts/GetPowerShellWithWindowsUpdate.ps1" />
+    <File Path="PowerShellScripts/GitCommitLocalBranchesWithChanges.ps1" />
+    <File Path="PowerShellScripts/GitListLocalBranchesWithChanges.ps1" />
+    <File Path="PowerShellScripts/GitPullCleanTrees.ps1" />
+    <File Path="PowerShellScripts/GitPushCleanTrees.ps1" />
+    <File Path="PowerShellScripts/GitRenameMasterToMain.ps1" />
+    <File Path="PowerShellScripts/GitSyncRemotes.ps1" />
+    <File Path="PowerShellScripts/iobroker_UpdateHost.ps1" />
+    <File Path="PowerShellScripts/iobroker_UpdateNodeJs.ps1" />
+    <File Path="PowerShellScripts/portscanner.ps1" />
+    <File Path="PowerShellScripts/readme.md" />
+    <File Path="PowerShellScripts/RefreshStartmenuTiles.ps1" />
+    <File Path="PowerShellScripts/ReplaceFileContent.ps1" />
+    <File Path="PowerShellScripts/reset_windows_update.ps1" />
+    <File Path="PowerShellScripts/reset_windows_update.txt" />
+    <File Path="PowerShellScripts/SetDotNetSdk.ps1" />
+    <File Path="PowerShellScripts/SyncCarMp3List_Audi.ps1" />
+    <File Path="PowerShellScripts/SyncCarMp3List_Skoda.ps1" />
+    <File Path="PowerShellScripts/SyncMp3List.ps1" />
+    <File Path="PowerShellScripts/SystemPropertiesChecker.ps1" />
+    <File Path="PowerShellScripts/UpdateModernApps.ps1" />
+    <File Path="PowerShellScripts/WindowsUpdate.ps1" />
+    <File Path="PowerShellScripts/winupdatefornano.ps1" />
+  </Folder>
+</Solution>
