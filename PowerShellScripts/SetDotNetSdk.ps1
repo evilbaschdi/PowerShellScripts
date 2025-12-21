@@ -2,9 +2,9 @@ $projectsPath = "C:\Git"
 
 # Define current SDK versions
 $sdkPatchVersions = @{
-    "8"  = "415"
-    "9"  = "306"
-    "10" = "100-rc.2.25502.107"
+    "8"  = "416"
+    "9"  = "308"
+    "10" = "101"
 }
 
 # Boolean flag to control major version upgrade

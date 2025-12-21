@@ -1,4 +1,4 @@
-$File = "D:\Users\evilb\OneDrive\Dokumente\Audi.ffs_gui"
+$File = $Env:OneDrive + "\Dokumente\Audi.ffs_gui"
 [xml]$XmlDocument = Get-Content $File
 
 $FlashDiscPath = "H:\"

@@ -1,7 +1,7 @@
 $ProjectsPath = "C:\Git"
 
 $Remote1Path = 'https://github.com/evilbaschdi/'
-$Remote2Path = 'https://evilbaschdi.visualstudio.com/Main/_git/'
+$Remote2Path = 'https://evilbaschdi@dev.azure.com/evilbaschdi/Main/_git/'
 
 ForEach ($File in Get-ChildItem -Path $ProjectsPath -Filter publish.ps1 -Recurse -ErrorAction SilentlyContinue -Force) {
     Set-Location $File.Directory

@@ -5,9 +5,9 @@ $solutionFiles = Get-ChildItem -Path "C:\Git" -Recurse -Include "*.sln"
 foreach ($file in $solutionFiles) {
     # Holen Sie den Pfad zum Verzeichnis, das die .sln-Datei enthält
     $folderPath = $file.Directory.FullName
-    
+
     Write-Host "Verarbeite das Verzeichnis: $folderPath" -ForegroundColor Green
-    
+
     # Wechseln Sie in das Verzeichnis
     Set-Location -Path $folderPath
 
@@ -28,7 +28,7 @@ foreach ($file in $solutionFiles) {
     catch {
         Write-Host "  Fehler beim Löschen der Datei $file.FullName" -ForegroundColor Red
     }
-    
+
     Write-Host "----------------------------------------"
 }
 

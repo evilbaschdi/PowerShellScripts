@@ -1,4 +1,4 @@
-$File = "D:\Users\evilb\OneDrive\Dokumente\Music.ffs_gui"
+$File = $Env:OneDrive + "\Dokumente\Music.ffs_gui"
 [xml]$XmlDocument = Get-Content $File
 
 $RemotePath = "H:\"
