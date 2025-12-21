@@ -31,6 +31,27 @@ try {
     foreach ($repo in $repos) {
         Write-Output "Cloning: $($repo.name)"
         git clone $repo.remoteUrl
+
+        $branches = git branch -a
+        $hasDevelop = $branches -match "develop"
+
+        if ($hasDevelop) {
+            # Check if we are already on develop
+            $currentBranch = git rev-parse --abbrev-ref HEAD
+            if ($currentBranch -ne "develop") {
+                Write-Host "  -> Checking out 'develop' branch..." -ForegroundColor Cyan
+                git checkout develop 2>&1 | Out-Null
+            }
+
+            # Initialize Git Flow if not present
+            $gitFlowConfig = git config --get gitflow.branch.master
+            if (-not $gitFlowConfig) {
+                Write-Host "  -> Initializing Git Flow..." -ForegroundColor Cyan
+                # Force defaults (-d) to avoid interactive prompts
+                git flow init -d 2>&1 | Out-Null
+            }
+        }
+
         Write-Output "---"
     }
 }
