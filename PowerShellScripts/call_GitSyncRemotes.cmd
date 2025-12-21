@@ -3,7 +3,7 @@ set arg1=%1
 
 set Remote1Name = "origin"
 set Remote1Path = "https://github.com/evilbaschdi/"
-set Remote2Name = "vsts"
+set Remote2Name = "azuredevops"
 set Remote2Path = "https://evilbaschdi@dev.azure.com/evilbaschdi/Main/_git/"
 
 cd %1

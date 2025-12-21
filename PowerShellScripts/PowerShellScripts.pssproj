@@ -1,5 +1,4 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build"
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
@@ -14,8 +13,7 @@
     <Compile Include="AnalyzeDotNetProjects.ps1" />
     <Compile Include="BuildAndDeploy.ps1" />
     <Compile Include="clone.ps1" />
-    <Compile Include="clone_vsts.ps1" />
-    <Compile Include="ConnectViaRemoteManagement.ps1" />
+    <Compile Include="clone_azuredevops.ps1" />
     <Compile Include="CreateFileExplorerVersionControlEntries.ps1" />
     <Compile Include="GetDotNetVersions.ps1" />
     <Compile Include="GetInstalledWindowsVersions.ps1" />
@@ -26,11 +24,8 @@
     <Compile Include="GitPushCleanTrees.ps1" />
     <Compile Include="GitRenameMasterToMain.ps1" />
     <Compile Include="GitSyncRemotes.ps1" />
-    <Compile Include="iobroker_UpdateHost.ps1" />
-    <Compile Include="iobroker_UpdateNodeJs.ps1" />
     <Compile Include="MigrateToSlnx.ps1" />
     <Compile Include="portscanner.ps1" />
-    <Compile Include="RefreshStartmenuTiles.ps1" />
     <Compile Include="ReplaceFileContent.ps1" />
     <Compile Include="reset_windows_update.ps1" />
     <Compile Include="SetDotNetSdk.ps1" />
@@ -40,7 +35,6 @@
     <Compile Include="SystemPropertiesChecker.ps1" />
     <Compile Include="UpdateModernApps.ps1" />
     <Compile Include="WindowsUpdate.ps1" />
-    <Compile Include="winupdatefornano.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="call_GitSyncRemotes.cmd" />

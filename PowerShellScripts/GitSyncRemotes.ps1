@@ -11,10 +11,8 @@ $Remote1Path = '*://github.com/evilbaschdi/'
 $Remote2Name = 'azuredevops'
 $Remote2Path = 'https://evilbaschdi@dev.azure.com/evilbaschdi/Main/_git/'
 
-#$Remote3Name = 'vsts'
-
 function Invoke-GitSync {
-    # Set 'origin' and 'vsts' to fit your environment
+    # Set 'origin' and 'azuredevops' to fit your environment
     git fetch $Remote1Name --tags
     git fetch $Remote2Name --tags
 
