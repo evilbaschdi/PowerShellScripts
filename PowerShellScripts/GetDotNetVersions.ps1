@@ -1,43 +1,43 @@
-$json = $((Get-Content ".\DotNetVersionReleaseKeyMapping.json" -Raw) | ConvertFrom-Json).PSObject.Properties
+$scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
+$jsonPath = Join-Path $scriptPath "DotNetVersionReleaseKeyMapping.json"
+$json = $((Get-Content $jsonPath -Raw) | ConvertFrom-Json).PSObject.Properties
 
-$ErrorActionPreference = 'silentlycontinue'
-Write-Output (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse |
-    Get-ItemProperty -name Version, Release -EA 0 |
-    Where-Object { $_.PSChildName -match '^(?!S)\p{L}' } |
-    Select-Object PSChildName, Version, Release, @{
-      name       = "Product"
-      expression = {
-        if ($_.Release) {
-          $releaseKey = ($json | Where-Object Name -Match $_.Release).Value
-          $releaseKey
-        }
+$ErrorActionPreference = 'SilentlyContinue'
+
+# .NET Framework versions
+Write-Output (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse |
+  Get-ItemProperty -Name Version, Release -ErrorAction SilentlyContinue |
+  Where-Object { $_.PSChildName -match '^(?!S)\p{L}' } |
+  Select-Object PSChildName, Version, Release, @{
+    Name       = "Product"
+    Expression = {
+      if ($_.Release) {
+        ($json | Where-Object Name -Match $_.Release).Value
       }
-    } | Format-Table | Out-String)
-$blankLine = "`n"
-#dotnet core runtimes
-$runtimes = dotnet --list-runtimes | Out-String
-if (!$runtimes.StartsWith(".")) {
-  Write-Output "dotnet core runtimes"
-  Write-Output "--------------------"
+    }
+  } | Format-Table | Out-String)
+
+# .NET Core/5+ Runtimes
+$runtimes = dotnet --list-runtimes 2>$null | Out-String
+if ($runtimes -and -not $runtimes.StartsWith(".")) {
+  Write-Output ".NET Core Runtimes"
+  Write-Output "------------------"
   Write-Output $runtimes
-  Write-Output $blankLine
 }
-#dotnet core sdks
-$sdks = dotnet --list-sdks | Out-String
-if (!$sdks.StartsWith(".")) {
-  Write-Output "dotnet core sdks"
-  Write-Output "----------------"
+
+# .NET Core/5+ SDKs
+$sdks = dotnet --list-sdks 2>$null | Out-String
+if ($sdks -and -not $sdks.StartsWith(".")) {
+  Write-Output ".NET Core SDKs"
+  Write-Output "---------------"
   Write-Output $sdks
-  Write-Output $blankLine
 }
-#dotnet core versions - pre 2.1
-#todo if empty "runtimes" and "sdks"
-$version = dotnet --version | Out-String
-if (($runtimes.StartsWith(".") -or $sdks.StartsWith(".")) -and !$version.StartsWith(".")) {
-  Write-Output "dotnet core version"
-  Write-Output "-------------------"
+
+# .NET Version (for pre-2.1 versions)
+$version = dotnet --version 2>$null | Out-String
+if ($version -and -not $version.StartsWith(".") -and ($runtimes.StartsWith(".") -or $sdks.StartsWith("."))) {
+  Write-Output ".NET Version"
+  Write-Output "-------------"
   Write-Output $version
-  Write-Output $blankLine
 }
-Write-Output "Press any key to continue..."
-$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp") > $null
+
