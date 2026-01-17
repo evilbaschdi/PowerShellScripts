@@ -14,17 +14,17 @@ $ReleaseIdNull = $null -eq (Get-ItemProperty $regkeypath).ReleaseId
 if ($ReleaseIdNull -eq $false) {
     $ReleaseId = " (Release " + (Get-ItemProperty $regkeypath).ReleaseId + ")"
 }
-Write-Output("Productname: " + (Get-WMIObject Win32_OperatingSystem).Caption + $ReleaseId)
+Write-Output("Productname: " + (Get-CimInstance Win32_OperatingSystem).Caption + $ReleaseId)
 #Architecture
-Write-Output("Architecture: " + (Get-WMIObject Win32_OperatingSystem).OSArchitecture)
+Write-Output("Architecture: " + (Get-CimInstance Win32_OperatingSystem).OSArchitecture)
 #Manufacturer
-Write-Output("Manufacturer: " + (Get-WMIObject Win32_ComputerSystem).Manufacturer)
+Write-Output("Manufacturer: " + (Get-CimInstance Win32_ComputerSystem).Manufacturer)
 
 #Windows
 Write-Output("")
 Write-Output("## Windows ##")
 $BuildNumber = ""
-$CurrentVersion = (Get-WMIObject Win32_OperatingSystem).Version
+$CurrentVersion = (Get-CimInstance Win32_OperatingSystem).Version
 $CurrentVersionSplit = $CurrentVersion.Split('.')
 $CurrentBuild = (Get-ItemProperty $regkeypath).CurrentBuild
 $BuildLab = (Get-ItemProperty $regkeypath).BuildLab

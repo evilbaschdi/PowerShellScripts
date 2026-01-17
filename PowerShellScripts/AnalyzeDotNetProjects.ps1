@@ -23,7 +23,7 @@ function Get-GlobalJsonSdkVersion {
                 }
             }
             catch {
-                # Invalid JSON or no sdk.version property
+                Write-Error "Failed to parse global.json at $globalJsonPath: $_"
             }
         }
         
@@ -237,9 +237,9 @@ $outputPath = Join-Path (Get-Location) $OutputFile
 $markdown = @"
 # .NET Projects Analysis
 
-**Root Path:** ``$RootPath``  
-**Generated:** $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")  
-**Total Projects:** $($results.Count)  
+**Root Path:** `$RootPath`
+**Generated:** $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+**Total Projects:** $($results.Count)
 **Projects with ${TargetNetVersion}:** $($results | Where-Object { $_.HasTargetNet } | Measure-Object | Select-Object -ExpandProperty Count)
 
 ---
