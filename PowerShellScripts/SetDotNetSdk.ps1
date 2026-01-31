@@ -3,7 +3,7 @@ $projectsPath = "C:\Git"
 # Define current SDK versions
 $sdkPatchVersions = @{
     "8"  = "417"
-    "9"  = "309"
+    "9"  = "310"
     "10" = "102"
 }
 
