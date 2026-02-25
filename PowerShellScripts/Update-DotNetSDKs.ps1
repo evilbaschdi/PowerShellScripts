@@ -12,7 +12,7 @@ catch {
 
 # Filter for active support phases
 $activeChannels = $metadata.'releases-index' | Where-Object {
-    $_.'support-phase' -eq 'active' -or $_.'support-phase' -eq 'maintenance'
+    $_.'support-phase' -eq 'active'
 }
 
 # Get the absolute highest version currently installed on the machine
