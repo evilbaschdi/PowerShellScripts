@@ -15,7 +15,7 @@ This repository contains a collection of PowerShell scripts for various automati
 
 ## .NET & Development
 
-### AnalyzeDotNetProjects.ps1
+### Analyze-DotNetProjects.ps1
 Analyzes all .NET projects under a specified root path and generates a markdown report.
 
 **Features:**
@@ -33,17 +33,17 @@ Analyzes all .NET projects under a specified root path and generates a markdown 
 
 **Usage:**
 ```powershell
-.\AnalyzeDotNetProjects.ps1
-.\AnalyzeDotNetProjects.ps1 -RootPath "C:\Git" -TargetNetVersion "net10.0"
+.\Analyze-DotNetProjects.ps1
+.\Analyze-DotNetProjects.ps1 -RootPath "C:\Git" -TargetNetVersion "net10.0"
 ```
 
-### BuildAndDeploy.ps1
+### Invoke-BuildAndDeploy.ps1
 Builds and deploys .NET projects.
 
-### GetDotNetVersions.ps1
+### Get-DotNetVersions.ps1
 Retrieves installed .NET versions on the system.
 
-### MigrateToSlnx.ps1
+### Invoke-MigrateToSlnx.ps1
 Migrates Visual Studio solution files (.sln) to the new .slnx format.
 
 **Features:**
@@ -51,29 +51,29 @@ Migrates Visual Studio solution files (.sln) to the new .slnx format.
 - Runs `dotnet sln migrate` for each solution
 - Displays progress and error messages
 
-### SetDotNetSdk.ps1
+### Set-DotNetSdk.ps1
 Sets or switches the .NET SDK version using global.json.
 
 ---
 
 ## Git Operations
 
-### GitCommitLocalBranchesWithChanges.ps1
+### Invoke-GitCommitLocalBranchesWithChanges.ps1
 Commits changes in all local Git branches that have uncommitted changes.
 
-### GitListLocalBranchesWithChanges.ps1
+### Get-GitLocalBranchesWithChanges.ps1
 Lists all local Git branches that have uncommitted changes.
 
-### GitPullCleanTrees.ps1
+### Invoke-GitPullCleanTrees.ps1
 Pulls latest changes from remote repositories for clean working trees.
 
-### GitPushCleanTrees.ps1
+### Invoke-GitPushCleanTrees.ps1
 Pushes local commits to remote repositories for clean working trees.
 
-### GitRenameMasterToMain.ps1
+### Rename-GitMasterToMain.ps1
 Renames the `master` branch to `main` in Git repositories.
 
-### GitSyncRemotes.ps1
+### Sync-GitRemotes.ps1
 Synchronizes multiple Git remotes (e.g., GitHub and Azure DevOps).
 
 **Features:**
@@ -90,26 +90,26 @@ Synchronizes multiple Git remotes (e.g., GitHub and Azure DevOps).
 - `$Remote2Name` - Second remote name (default: "azuredevops")
 - `$Remote2Path` - Second remote URL pattern
 
-### clone.ps1
-Clones Git repositories from a specified source.
+### Clone-GitHubRepo.ps1
+Clones Git repositories from GitHub.
 
-### clone_vsts.ps1
+### Clone-AzureDevOpsRepo.ps1
 Clones Git repositories from Azure DevOps (VSTS).
 
 ---
 
 ## Windows Management
 
-### AddRsatToWindows.ps1
+### Add-Rsat.ps1
 Adds Remote Server Administration Tools (RSAT) to Windows.
 
-### CreateFileExplorerVersionControlEntries.ps1
+### New-FileExplorerVersionControlEntries.ps1
 Creates context menu entries in File Explorer for version control operations.
 
-### GetInstalledWindowsVersions.ps1
+### Get-InstalledWindowsVersions.ps1
 Retrieves information about installed Windows versions.
 
-### GetPowerShellWithWindowsUpdate.ps1
+### Get-PowerShellWithWindowsUpdate.ps1
 Gets PowerShell modules related to Windows Update functionality.
 
 **Note:** The original PSWindowsUpdate PowerShell module can be found on the [PowerShell Gallery](https://www.powershellgallery.com/packages/PSWindowsUpdate).
@@ -117,16 +117,16 @@ Gets PowerShell modules related to Windows Update functionality.
 ### RefreshStartmenuTiles.ps1
 Refreshes Windows Start Menu tiles.
 
-### reset_windows_update.ps1
+### Reset-WindowsUpdate.ps1
 Resets Windows Update components to fix update issues.
 
-### SystemPropertiesChecker.ps1
+### Test-SystemProperties.ps1
 Checks and validates system properties and configurations.
 
-### UpdateModernApps.ps1
+### Update-ModernApps.ps1
 Updates Windows Modern Apps (UWP apps).
 
-### WindowsUpdate.ps1
+### Invoke-WindowsUpdate.ps1
 Manages Windows Update operations.
 
 ### winupdatefornano.ps1
@@ -136,16 +136,16 @@ Windows Update script specifically for Windows Nano Server.
 
 ## Media & File Management
 
-### ReplaceFileContent.ps1
+### Update-FileContent.ps1
 Replaces content in files based on specified patterns.
 
-### SyncCarMp3List_Audi.ps1
+### Sync-CarMp3List-Audi.ps1
 Synchronizes MP3 playlist for Audi car systems.
 
-### SyncCarMp3List_Skoda.ps1
+### Sync-CarMp3List-Skoda.ps1
 Synchronizes MP3 playlist for Skoda car systems.
 
-### SyncMp3List.ps1
+### Sync-Mp3List.ps1
 General MP3 playlist synchronization script.
 
 ---
@@ -155,7 +155,7 @@ General MP3 playlist synchronization script.
 ### ConnectViaRemoteManagement.ps1
 Connects to remote systems using Windows Remote Management (WinRM).
 
-### portscanner.ps1
+### Invoke-PortScanner.ps1
 Scans network ports to check availability and connectivity.
 
 ---

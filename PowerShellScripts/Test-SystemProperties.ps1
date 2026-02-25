@@ -78,7 +78,7 @@ if (Test-Path $historyPath) {
 
 #.Net
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
-$dotNetScriptPath = Join-Path $scriptPath "GetDotNetVersions.ps1"
+$dotNetScriptPath = Join-Path $scriptPath "Get-DotNetVersions.ps1"
 if (Test-Path $dotNetScriptPath) {
 
     Write-Output("")

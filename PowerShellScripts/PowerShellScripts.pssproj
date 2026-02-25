@@ -9,32 +9,36 @@
     <Name>PowerShellScripts</Name>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AddRsatToWindows.ps1" />
-    <Compile Include="AnalyzeDotNetProjects.ps1" />
-    <Compile Include="BuildAndDeploy.ps1" />
-    <Compile Include="clone.ps1" />
-    <Compile Include="clone_azuredevops.ps1" />
-    <Compile Include="CreateFileExplorerVersionControlEntries.ps1" />
-    <Compile Include="GetDotNetVersions.ps1" />
-    <Compile Include="GetInstalledWindowsVersions.ps1" />
-    <Compile Include="GetPowerShellWithWindowsUpdate.ps1" />
-    <Compile Include="GitCommitLocalBranchesWithChanges.ps1" />
-    <Compile Include="GitListLocalBranchesWithChanges.ps1" />
-    <Compile Include="GitPullCleanTrees.ps1" />
-    <Compile Include="GitPushCleanTrees.ps1" />
-    <Compile Include="GitRenameMasterToMain.ps1" />
-    <Compile Include="GitSyncRemotes.ps1" />
-    <Compile Include="MigrateToSlnx.ps1" />
-    <Compile Include="portscanner.ps1" />
-    <Compile Include="ReplaceFileContent.ps1" />
-    <Compile Include="reset_windows_update.ps1" />
-    <Compile Include="SetDotNetSdk.ps1" />
-    <Compile Include="SyncCarMp3List_Audi.ps1" />
-    <Compile Include="SyncCarMp3List_Skoda.ps1" />
-    <Compile Include="SyncMp3List.ps1" />
-    <Compile Include="SystemPropertiesChecker.ps1" />
-    <Compile Include="UpdateModernApps.ps1" />
-    <Compile Include="WindowsUpdate.ps1" />
+    <Compile Include="Add-Rsat.ps1" />
+    <Compile Include="Analyze-DotNetProjects.ps1" />
+    <Compile Include="Invoke-BuildAndDeploy.ps1" />
+    <Compile Include="Clone-GitHubRepo.ps1" />
+    <Compile Include="Clone-AzureDevOpsRepo.ps1" />
+    <Compile Include="New-FileExplorerVersionControlEntries.ps1" />
+    <Compile Include="Get-DotNetVersions.ps1" />
+    <Compile Include="Get-InstalledWindowsVersions.ps1" />
+    <Compile Include="Get-PowerShellWithWindowsUpdate.ps1" />
+    <Compile Include="Invoke-GitCommitLocalBranchesWithChanges.ps1" />
+    <Compile Include="Get-GitLocalBranchesWithChanges.ps1" />
+    <Compile Include="Invoke-GitPullCleanTrees.ps1" />
+    <Compile Include="Invoke-GitPushCleanTrees.ps1" />
+    <Compile Include="Rename-GitMasterToMain.ps1" />
+    <Compile Include="Sync-GitRemotes.ps1" />
+    <Compile Include="Invoke-MigrateToSlnx.ps1" />
+    <Compile Include="Invoke-PortScanner.ps1" />
+    <Compile Include="Update-FileContent.ps1" />
+    <Compile Include="Reset-WindowsUpdate.ps1" />
+    <Compile Include="Set-DotNetSdk.ps1" />
+    <Compile Include="Sync-CarMp3List-Audi.ps1" />
+    <Compile Include="Sync-CarMp3List-Skoda.ps1" />
+    <Compile Include="Sync-Mp3List.ps1" />
+    <Compile Include="Test-SystemProperties.ps1" />
+    <Compile Include="Update-ModernApps.ps1" />
+    <Compile Include="Invoke-WindowsUpdate.ps1" />
+    <Compile Include="Add-DefenderExclusions.ps1" />
+    <Compile Include="Clone-AndSetupRemotes.ps1" />
+    <Compile Include="Update-DotNetSDKs.ps1" />
+    <Compile Include="Update-ProjectMetadata.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="call_GitSyncRemotes.cmd" />
